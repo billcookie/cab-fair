@@ -1,33 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import FareSplitForm from './components/fare-split-form/fair-split-form'
+import FarePredictor from './components/fare-predictor/fair-predictor'
+import { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showFairPreditor, setShowFairPredictor] = useState<boolean>(false)
 
+  const handleShowFairPredictor = () => {
+    setShowFairPredictor(prev => !prev)
+  }
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1 className="text-3xl font-bold underline">
+          Cab Fair
+        </h1>
       </div>
-      <h1>Vite + React</h1>
+      <button onClick={handleShowFairPredictor} className="bg-green-500 text-white px-4 py-2 rounded mb-4">
+        Need an Estimate?
+      </button>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        {showFairPreditor && <FarePredictor />}
+        <FareSplitForm />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
