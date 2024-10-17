@@ -3,7 +3,7 @@ interface FareParams {
   totalDistance: number // Total distance traveled in km
   isLateNight: boolean // Is the ride during late-night hours (10 p.m. to 5 a.m.)
   timeAtLowSpeed: number // Time spent below 10 km/h in seconds
-  zone: "tokyo" | "tama" // Zone: 23 Wards of Tokyo or Tama area
+  zone: string // Zone: 23 Wards of Tokyo or Tama area
   additionalCharges?: number // Optional additional charges (taxi order fee, freeway tolls, etc.)
   legs: number[] // Distances for each rider's leg of the journey in km
 }

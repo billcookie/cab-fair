@@ -6,9 +6,9 @@ import { Button } from '../ui/button';
 const FarePredictor: React.FC = () => {
   const [distance, setDistance] = useState<number>(0)
   const [isLateNight, setIsLateNight] = useState<boolean>(false)
-  const [zone, setZone] = useState<"tokyo" | "tama">("tokyo")
+  // const [zone, setZone] = useState<"tokyo" | "tama">("tokyo")
   const [predictedFare, setPredictedFare] = useState<number | null>(null)
-
+  const zone = 'tokyo'
   const handleCalculateFare = () => {
     const fareParams = {
       totalDistance: distance,
