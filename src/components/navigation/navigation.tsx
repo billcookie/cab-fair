@@ -12,30 +12,20 @@ import {
 
 const components: { title: string; description: string }[] = [
   {
-    title: "Taxi Fare Calculations",
+    title: "Splitting Fairly",
     description:
-      "We use Tokyo Hire-Taxi Association rates",
+      "The default method for a reason! Splitting fairly takes into account the distance each person traveled, ensuring that everyone contributes based on their share of the ride. It’s a balanced approach that aims for fairness in every journey.",
   },
   {
-    title: "Group Fare Splitting",
+    title: "Splitting Proportionately",
     description:
-      "Easily divide the total fare based on each rider's distance.",
+      "For those who want to dive deeper into the numbers, splitting proportionately considers each rider's distance relative to the total journey. This method provides a more granular approach, perfect for groups looking to ensure that everyone pays their fair share based on actual usage.",
   },
   {
-    title: "Savings Comparison",
+    title: "Splitting Evenly",
     description:
-      "Compare individual fares with group fares to see how much you save."
+      "When it comes to splitting the fare, sometimes the simplest method is best. With splitting evenly, everyone pays the same amount, making it a hassle-free choice for friends who want to keep things straightforward."
   },
-  {
-    title: "User-Friendly Interface",
-    description:
-      "Intuitive design for hassle-free fare calculations and splits.",
-  },
-  {
-    title: "Instant Fare Estimates",
-    description:
-      "Get quick estimates of your fare based on distance and time."
-  }
 ]
 
 export function Navigation() {
@@ -55,16 +45,17 @@ export function Navigation() {
                       About Cab Fair
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Cab Fair is a simple tool that splits taxi fares fairly based on each person's distance from the starting point.
+                      After too many missed last trains and unfortunate taxi rides home, we're dedicated to helping the world* get home safe and split cab fares fairly.
+                      (* by world, we mean Greater Tokyo Area)
                     </p>
                   </div>
                 </NavigationMenuLink>
               </li>
-              <ListItem title="Easy Peasy">
-                Never have the trouble of splitting cab fares again.
+              <ListItem title="Settle the Debate">
+                The taxi fare debate has raged on for centuries (in the world of philosophy), but that doesn't mean it needs to rage on between friends.
               </ListItem>
-              <ListItem title="Fair for Everyone">
-                Automatically calculates each rider's share based on their distance.
+              <ListItem title="Fair & Square">
+                With four different ways to split the taxi ride, there's an option for every preference. While we have our own views, ultimately each friend group is different, so choose the method that best suits you (and your friends).
               </ListItem>
               <ListItem title="Save Money">
                 See how much you save compared to taking a solo cab.
@@ -73,7 +64,7 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>How We Do</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Methods</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className=" gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-black">
               {components.map((component) => (
@@ -115,7 +106,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none text-white">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <p className=" text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </div>
