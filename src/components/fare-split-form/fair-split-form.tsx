@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 const calculateSoloFare = (distance: number): number => {
   const baseFare = 500;
@@ -16,6 +19,7 @@ const calculateSoloFare = (distance: number): number => {
 const FareSplitCalculator: React.FC = () => {
   const [totalCabFare, setTotalCabFare] = useState<number>(0)
   const [distances, setDistances] = useState<number[]>([0, 0])
+  const [splitMethod, setSplitMethod] = useState<string>('Fair')
   const [results, setResults] = useState<{
     rider: number
     distance: number
@@ -64,14 +68,29 @@ const FareSplitCalculator: React.FC = () => {
     setResults(payments)
   };
 
+  const handleSelectChange = (value: string) => {
+    setSplitMethod(value)
+  }
 
   return (
-    <div className="p-4">
+    <div className="p-4 text-white">
       <h1 className="text-2xl font-bold mb-4">Taxi Fare Split Calculator</h1>
+      <div className="mb-4">
+        <Select onValueChange={handleSelectChange}>
+          <SelectTrigger>
+            <SelectValue placeholder="Split Method" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Fair">Fair</SelectItem>
+            <SelectItem value="Evenly">Evenly</SelectItem>
+            <SelectItem value="Proportionate">Proportionate</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
       <div className="mb-4">
         <label className="block mb-2">
           Total Cab Fare (¥):
-          <input
+          <Input
             type="number"
             value={totalCabFare}
             onChange={(e) => setTotalCabFare(Number(e.target.value))}
@@ -83,7 +102,7 @@ const FareSplitCalculator: React.FC = () => {
         <div key={index} className="mb-2">
           <label className="block">
             Rider {index + 1} Distance (km):
-            <input
+            <Input
               type="number"
               step="0.01"
               value={distance}
@@ -96,12 +115,12 @@ const FareSplitCalculator: React.FC = () => {
         </div>
       ))}
       <div className="mb-4">
-        {riders > 5 && <button onClick={addRider} disabled className="bg-blue-500 text-white px-4 py-2 rounded mr-2">Add Rider</button>}
-        {riders < 5 && <button onClick={addRider} className="bg-blue-500 text-white px-4 py-2 rounded mr-2">Add Rider</button>}
-        <button onClick={removeRider} className="bg-red-500 text-white px-4 py-2 rounded">Remove Rider</button>
+        {riders > 5 && <Button onClick={addRider} className="px-4 py-2 mr-2">Add Rider</Button>}
+        {riders < 5 && <Button onClick={addRider} className="px-4 py-2 mr-2">Add Rider</Button>}
+        <Button onClick={removeRider}>Remove Rider</Button>
       </div>
-      <button onClick={calculateSplit} className="bg-green-500 text-white px-4 py-2 rounded mb-4">Calculate Split and Savings</button>
-      {results.length > 0 && (
+      <Button onClick={calculateSplit} className="px-4 py-2 mb-4"> Calculate Split and Savings</Button>
+      {splitMethod === 'Fair' && results.length > 0 && (
         <div>
           <h2 className="text-xl font-bold mb-2">Results:</h2>
           {results.map((result) => (
@@ -116,12 +135,14 @@ const FareSplitCalculator: React.FC = () => {
             Total Group Savings: ¥{(results[0].savings * results.length).toFixed(0)}
           </p>
           <p className="font-bold">
-            Actual Total Paid: ¥{totalCabFare} (¥{(totalCabFare / results.length).toFixed(0)} per person if split equally)
+            Actual Total Paid: ¥{totalCabFare}
           </p>
+
         </div>
       )}
+      {splitMethod === 'Evenly' && <p className="font-bold">Total to be paid equally per person:¥{(totalCabFare / results.length).toFixed(0)}</p>}
     </div>
-  );
-};
+  )
+}
 
 export default FareSplitCalculator
