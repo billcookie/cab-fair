@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { useTranslation } from "react-i18next"
+import { FaPiggyBank, FaBalanceScale, FaPeopleArrows, FaHandshake, FaMoneyBillWave, FaCoins, FaChartPie } from "react-icons/fa"
 
 
 
@@ -22,35 +23,36 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({
   handleChangeLanguage, currentLanguage }) => {
   const { t } = useTranslation()
-  const components: { title: string; description: string }[] = [
+  const components: { title: string; description: string; icon: JSX.Element }[] = [
     {
       title: `${t("splittingFairlyTitle")}`,
-      description:
-        `${t("splittingFairlyDescription")}`,
+      description: `${t("splittingFairlyDescription")}`,
+      icon: <FaPeopleArrows className="w-8	h-8" />,
     },
     {
       title: `${t("splittingEvenSavingsTitle")}`,
-      description:
-        `${t("splittingEvenSavingsDescription")}`,
+      description: `${t("splittingEvenSavingsDescription")}`,
+      icon: <FaCoins className="w-8	h-8" />,
     },
     {
       title: `${t("splittingEvenlyTitle")}`,
-      description:
-        `${t("splittingEvenlyDescription")}`
+      description: `${t("splittingEvenlyDescription")}`,
+      icon: <FaMoneyBillWave className="w-8	h-8" />,
     },
     {
       title: `${t("splittingProportionatelyTitle")}`,
-      description:
-        `${t("splittingProportionatelyDescription")}`,
+      description: `${t("splittingProportionatelyDescription")}`,
+      icon: <FaChartPie className="w-8	h-8" />,
     },
-  ]
+  ];
+
   return (
     <NavigationMenu className="text-white">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>{t('aboutUs')}</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-black">
+            <ul className="grid gap-2 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-black">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <div
@@ -67,13 +69,22 @@ export const Navigation: React.FC<NavigationProps> = ({
                 </NavigationMenuLink>
               </li>
               <ListItem title={`${t('settleTheDebateTitle')}`}>
-                {t('settleTheDebateDescription')}
+                <div className="flex flex-col justify-center items-center gap-2 mt-2">
+                  <FaHandshake className="w-8	h-8" />
+                  {t('settleTheDebateDescription')}
+                </div>
               </ListItem>
               <ListItem title={`${t('fairAndSquareTitle')}`}>
-                {t('fairAndSquareDescription')}
+                <div className="flex flex-col justify-center items-center gap-2 mt-2">
+                  <FaBalanceScale className="w-8	h-8" />
+                  {t('fairAndSquareDescription')}
+                </div>
               </ListItem>
               <ListItem title={`${t('saveMoneyTitle')}`}>
-                {t('saveMoneyDescription')}
+                <div className="flex flex-col justify-center items-center gap-2 mt-2">
+                  <FaPiggyBank className="w-8	h-8" />
+                  {t('saveMoneyDescription')}
+                </div>
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -86,6 +97,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <ListItem
                   key={component.title}
                   title={component.title}
+                  icon={component.icon}
                 >
                   {component.description}
                 </ListItem>
@@ -116,26 +128,33 @@ export const Navigation: React.FC<NavigationProps> = ({
 
 const ListItem = React.forwardRef<
   React.ElementRef<"div">,
-  React.ComponentPropsWithoutRef<"div">
->(({ className, title, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"div"> & { title: string; icon?: JSX.Element }
+>(({ className, title, icon, children, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <div
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none text-white">{title}</div>
-          <p className=" text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
+          <div className="flex items-center justify-center space-x-2">
+            <div className="text-sm font-medium leading-none text-white">{title}</div>
+          </div>
+          <div className="flex flex-col justify-center items-center gap-2 mt-4">
+            {icon && <div className="text-muted-foreground">{icon}</div>}
+            <p className="text-sm leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </div>
+
         </div>
       </NavigationMenuLink>
     </li>
-  )
-})
+  );
+});
+
 ListItem.displayName = "ListItem"
