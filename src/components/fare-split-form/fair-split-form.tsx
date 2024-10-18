@@ -3,7 +3,7 @@ import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { DataTable } from '../data-table/data-table'
-import { columns } from '../data-table/columns'
+import { englishColumns, japaneseColumns } from '../data-table/columns'
 import { useTranslation } from 'react-i18next'
 
 const calculateSoloFare = (distance: number): number => {
@@ -24,7 +24,7 @@ const FareSplitCalculator: React.FC = () => {
   const [totalCabFare, setTotalCabFare] = useState<string>('')
   const [distances, setDistances] = useState<string[]>(['', ''])
   const [splitMethod, setSplitMethod] = useState<string>('Fairly')
-  const { t } = useTranslation()
+  const { t, i18n: { language } } = useTranslation()
   const [results, setResults] = useState<{
     rider: number
     distance: number
@@ -166,7 +166,7 @@ const FareSplitCalculator: React.FC = () => {
       {results.length > 0 && (
         <div>
           <h2 className="text-xl font-bold mb-2">{t("results")}:</h2>
-          <DataTable columns={columns} data={results} />
+          <DataTable columns={language === 'en' ? englishColumns : japaneseColumns} data={results} />
           <p className="font-bold mt-4">
             {t("totalGroupSavings")}: ¥{Math.floor(results.reduce((sum, result) => sum + result.savings, 0))}
           </p>

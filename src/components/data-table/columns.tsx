@@ -1,6 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table"
 
-// TODO: Need to add Japanese translations here. 
 export type Payment = {
   id?: string
   rider: number
@@ -9,7 +8,7 @@ export type Payment = {
   finalPayment: number
 }
 
-export const columns: ColumnDef<Payment>[] = [
+export const englishColumns: ColumnDef<Payment>[] = [
   {
     accessorKey: "rider",
     header: "Rider",
@@ -28,6 +27,30 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "finalPayment",
     header: "Amount To Pay",
+    cell: ({ getValue }) => `¥${getValue()} `
+  },
+]
+
+
+export const japaneseColumns: ColumnDef<Payment>[] = [
+  {
+    accessorKey: "rider",
+    header: "乗客",
+    cell: ({ getValue }) => `乗客 ${getValue()}`
+  },
+  {
+    accessorKey: "distance",
+    header: "距離（km）",
+    cell: ({ getValue }) => `${getValue()}km`
+  },
+  {
+    accessorKey: "savings",
+    header: "割引",
+    cell: ({ getValue }) => `¥${getValue()} `
+  },
+  {
+    accessorKey: "finalPayment",
+    header: "支払金額",
     cell: ({ getValue }) => `¥${getValue()} `
   },
 ]
