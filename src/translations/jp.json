@@ -20,9 +20,11 @@
     "saveMoneyDescription": "単独でタクシーを利用する場合と比べて、どれだけ節約できるか確認しましょう。",
     "methods": "方法",
     "splittingFairlyTitle": "公正に分割",
+    "splittingEvenSavingsTitle": "均等割引に分割",
     "splittingProportionatelyTitle": "比例に応じて分割",
     "splittingEvenlyTitle": "均等に分割",
     "splittingFairlyDescription": "理由があってデフォルトの方法です！公正に分割することは、各人が移動した距離を考慮し、誰もが乗車の分担に基づいて貢献することを保証します。すべての旅での公正を目指すバランスの取れたアプローチです。",
+    "splittingEvenSavingsDescription": "この方法では、すべてのライダーに対して均等に割引を分配し、全員がタクシー料金の共有から平等に利益を得ることができます。グループ全員で公平に分けることを希望する場合に最適なシンプルな方法です。",
     "splittingProportionatelyDescription": "数字を深く掘り下げたい方には、比例に応じて分割する方法があります。各乗客の距離を総旅程に対して考慮するこの方法は、実際の使用に基づいてみんなが公平に支払うことを保証するのに最適です。",
     "splittingEvenlyDescription": "料金を分割する際、時には最もシンプルな方法が最適です。均等に分割することで、全員が同じ金額を支払うことになり、物事を簡素に保ちたい友人には便利な選択肢になります。",
     "taxiFareSplitCalculator": "タクシー料金分割計算機",
@@ -39,6 +41,7 @@
     "fairly": "公正に",
     "evenly": "均等に",
     "proportionately": "比例に応じて",
+    "evenSplitSavings": "均等割引",
      "placeHolder": "例：7800",
     "placeHolder2": "距離を入力してください"
   }

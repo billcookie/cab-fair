@@ -29,14 +29,19 @@ export const Navigation: React.FC<NavigationProps> = ({
         `${t("splittingFairlyDescription")}`,
     },
     {
-      title: `${t("splittingProportionatelyTitle")}`,
+      title: `${t("splittingEvenSavingsTitle")}`,
       description:
-        `${t("splittingProportionatelyDescription")}`,
+        `${t("splittingEvenSavingsDescription")}`,
     },
     {
       title: `${t("splittingEvenlyTitle")}`,
       description:
         `${t("splittingEvenlyDescription")}`
+    },
+    {
+      title: `${t("splittingProportionatelyTitle")}`,
+      description:
+        `${t("splittingProportionatelyDescription")}`,
     },
   ]
   return (

@@ -20,9 +20,11 @@
     "saveMoneyDescription": "See how much you save compared to taking a solo cab.",
     "methods": "Methods",
     "splittingFairlyTitle": "Splitting Fairly",
+    "splittingEvenSavingsTitle": "Splitting Even Savings",
     "splittingProportionatelyTitle": "Splitting Proportionately",
     "splittingEvenlyTitle": "Splitting Evenly",
     "splittingFairlyDescription": "The default method for a reason! Splitting fairly takes into account the distance each person traveled, ensuring that everyone contributes based on their share of the ride. It’s a balanced approach that aims for fairness in every journey.",
+    "splittingEvenSavingsDescription": "This method divides the savings equally among all riders, ensuring that each person benefits from the shared fare equally. It's a straightforward approach for groups who prefer to split everything evenly.",
     "splittingProportionatelyDescription": "For those who want to dive deeper into the numbers, splitting proportionately considers each rider's distance relative to the total journey. This method provides a more granular approach, perfect for groups looking to ensure that everyone pays their fair share based on actual usage.",
     "splittingEvenlyDescription": "When it comes to splitting the fare, sometimes the simplest method is best. With splitting evenly, everyone pays the same amount, making it a hassle-free choice for friends who want to keep things straightforward.",
     "taxiFareSplitCalculator": "Taxi Fare Split Calculator",
@@ -39,6 +41,7 @@
     "fairly": "Fairly",
     "evenly": "Evenly",
     "proportionately": "Proportionately",
+    "evenSplitSavings": "Even-Split Savings",
     "placeHolder": "Example: 7800",
     "placeHolder2": "Please Input the distance"
   }
