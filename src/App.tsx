@@ -22,7 +22,8 @@ function App() {
   return (
     <>
       <Navigation handleChangeLanguage={handleChangeLanguage} currentLanguage={currentLanguage} />
-      <div>
+      <div className='flex flex-col mt-8'>
+        <img src="/cab-fair-logo.svg" className='self-center' style={{ width: '60px', height: '60px' }} />
         <h1 className="text-3xl text-white font-bold mb-4 mt-4">
           {t('websiteTitle')}
         </h1>
