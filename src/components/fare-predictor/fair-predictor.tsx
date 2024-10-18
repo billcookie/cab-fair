@@ -1,7 +1,7 @@
 import useCalculateFare from '@/hooks/useCalculateFare'
-import React, { useState } from 'react';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+import React, { useState } from 'react'
+import { Input } from '../ui/input'
+import { Button } from '../ui/button'
 
 const FarePredictor: React.FC = () => {
   const [distance, setDistance] = useState<number>(0)
@@ -17,11 +17,11 @@ const FarePredictor: React.FC = () => {
       zone,
       additionalCharges: 0,
       legs: [],
-    };
+    }
 
     const fare = useCalculateFare(fareParams)
     setPredictedFare(fare);
-  };
+  }
 
   return (
     <div className="p-4 text-white">
@@ -59,7 +59,7 @@ const FarePredictor: React.FC = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default FarePredictor;
+export default FarePredictor
