@@ -84,7 +84,7 @@ const FareSplitCalculator: React.FC = () => {
           Split Method:
           <Select onValueChange={handleSelectChange}>
             <SelectTrigger>
-              <SelectValue placeholder="Fairly" />
+              <SelectValue placeholder="Fairly" defaultValue="Fairly" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="Fairly">Fairly</SelectItem>
