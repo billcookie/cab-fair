@@ -56,7 +56,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <div
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md text-white"
+                    className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md text-white"
                   >
                     <img src="/cab-fair-logo.svg" className='self-center' style={{ width: '60px', height: '60px' }} />
                     <div className="mb-2 mt-4 text-lg font-medium">
