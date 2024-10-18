@@ -1,4 +1,18 @@
-# React + TypeScript + Vite
+# Cab Fair
+
+A website that tries to make cab fares fair. 
+
+<br>
+🏠 App home: https://cab-fair.vercel.app/
+
+## 🛠️ Tools used
+- React 💄 (library): [https://react.dev/]
+- Vite ⚡️: [https://vite.dev/guide/]
+- Vercel 💻 (Hosted Website): [https://vercel.com/]
+- Shadcn/ui 📚 (UI Library): [https://ui.shadcn.com/]
+- Tailwind 🌪️ (CSS Framework): [https://tailwindcss.com/]
+- Yarn 🧶 (Package Manager): [https://yarnpkg.com/]
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
