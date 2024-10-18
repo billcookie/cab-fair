@@ -14,7 +14,7 @@ export function SiteFooter() {
           </a>
           . The source code is available on{" "}
           <a
-            href='/'
+            href='https://github.com/billcookie/cab-fair'
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"
