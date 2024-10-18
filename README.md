@@ -1,4 +1,4 @@
-# Cab Fair
+# 🚕 Cab Fair
 
 A website that tries to make cab fares fair. 
 
@@ -12,6 +12,7 @@ A website that tries to make cab fares fair.
 - Shadcn/ui 📚 (UI Library): [https://ui.shadcn.com/]
 - Tailwind 🌪️ (CSS Framework): [https://tailwindcss.com/]
 - Yarn 🧶 (Package Manager): [https://yarnpkg.com/]
+- i18n 🇯🇵 (Translations): [https://www.i18next.com/]
 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
