@@ -4,6 +4,7 @@ import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { DataTable } from '../data-table/data-table';
 import { columns } from '../data-table/columns';
+import { useTranslation } from 'react-i18next';
 
 const calculateSoloFare = (distance: number): number => {
   const baseFare = 500;
@@ -23,6 +24,7 @@ const FareSplitCalculator: React.FC = () => {
   const [totalCabFare, setTotalCabFare] = useState<string>('') // Changed to string
   const [distances, setDistances] = useState<string[]>(['', '']) // Changed to string[]
   const [splitMethod, setSplitMethod] = useState<string>('Fairly')
+  const { t } = useTranslation()
   const [results, setResults] = useState<{
     rider: number
     distance: number
@@ -78,30 +80,30 @@ const FareSplitCalculator: React.FC = () => {
 
   return (
     <div className="p-4 text-white">
-      <h1 className="text-2xl font-bold mb-4">Taxi Fare Split Calculator</h1>
+      <h1 className="text-2xl font-bold mb-4">{t("taxiFareSplitCalculator")}</h1>
       <div className="mb-4">
         <label className="block">
-          Split Method:
+          {t("splitMethod")}:
           <Select onValueChange={handleSelectChange} value={splitMethod}>
             <SelectTrigger>
-              <SelectValue placeholder="Fairly" />
+              <SelectValue placeholder={`${t("fairly")}`} />
             </SelectTrigger>
             <SelectContent className='bg-black text-white'>
-              <SelectItem value="Fairly">Fairly</SelectItem>
-              <SelectItem value="Evenly">Evenly</SelectItem>
-              <SelectItem value="Proportionately">Proportionately</SelectItem>
+              <SelectItem value="Fairly">{t("fairly")}</SelectItem>
+              <SelectItem value="Evenly">{t("evenly")}</SelectItem>
+              <SelectItem value="Proportionately">{t("proportionately")}</SelectItem>
             </SelectContent>
           </Select>
         </label>
       </div>
       <div className="mb-4">
         <label className="block mb-2">
-          Total Cab Fare (¥):
+          {t("totalCabFare")} (¥):
           <Input
             type="number"
             value={totalCabFare}
             onChange={(e) => setTotalCabFare(e.target.value)} // Keep as string
-            placeholder='Example: 7800'
+            placeholder={t('placeHolder')}
             className="border rounded px-2 py-1 w-full"
           />
         </label>
@@ -109,11 +111,11 @@ const FareSplitCalculator: React.FC = () => {
       {distances.map((distance, index) => (
         <div key={index} className="mb-2">
           <label className="block">
-            Rider {index + 1} Distance (km):
+            {t("rider")} {index + 1} {t("distance")}:
             <Input
               type="number"
               step="0.01"
-              placeholder='Please Input the distance from the previous to arrival'
+              placeholder={t('placeHolder2')}
               value={distance}
               onChange={(e) => handleDistanceChange(index, e.target.value)} // Keep as string
               className="border rounded px-2 py-1 w-full"
@@ -123,31 +125,31 @@ const FareSplitCalculator: React.FC = () => {
         </div>
       ))}
       <div className="mb-4">
-        {riders > 5 && <Button onClick={addRider} className="px-4 py-2 mr-2">Add Rider</Button>}
-        {riders < 5 && <Button onClick={addRider} className="px-4 py-2 mr-2">Add Rider</Button>}
-        <Button onClick={removeRider}>Remove Rider</Button>
+        {riders > 5 && <Button onClick={addRider} className="px-4 py-2 mr-2">{t("addRider")}</Button>}
+        {riders < 5 && <Button onClick={addRider} className="px-4 py-2 mr-2">{t("addRider")}</Button>}
+        <Button onClick={removeRider}>{t("removeRider")}</Button>
       </div>
-      <Button onClick={calculateSplit} className="px-4 py-2 mb-4">Calculate Split and Savings</Button>
+      <Button onClick={calculateSplit} className="px-4 py-2 mb-4">{t("calculateSplitSavings")}</Button>
       {splitMethod === 'Fairly' && results.length > 0 && (
         <div>
-          <h2 className="text-xl font-bold mb-2">Results:</h2>
+          <h2 className="text-xl font-bold mb-2">{t("results")}:</h2>
           <DataTable columns={columns} data={results} />
           <p className="font-bold mt-4">
-            Total Group Savings: ¥{(results[0].savings * results.length).toFixed(0)}
+            {t("totalGroupSavings")} ¥{(results[0].savings * results.length).toFixed(0)}
           </p>
           <p className="font-bold">
-            Actual Total Paid: ¥{totalCabFare}
+            {t("actualTotalPaid")}: ¥{totalCabFare}
           </p>
         </div>
       )}
       {results.length > 0 && splitMethod === 'Evenly' && <div>
-        <h2 className="text-xl font-bold mb-2">Results:</h2>
-        <p className="font-bold">Total to be paid equally per person: ¥{(Number(totalCabFare) / results.length).toFixed(0)}</p>
+        <h2 className="text-xl font-bold mb-2">{t("results")}:</h2>
+        <p className="font-bold">{t("totalToBePaidEqually")} ¥{(Number(totalCabFare) / results.length).toFixed(0)}</p>
         <p className="font-bold mt-4">
-          Total Group Savings: ¥{(results[0].savings * results.length).toFixed(0)}
+          {t("totalGroupSavings")}: ¥{(results[0].savings * results.length).toFixed(0)}
         </p>
         <p className="font-bold">
-          Actual Total Paid: ¥{totalCabFare}
+          {t("actualTotalPaid")}: ¥{totalCabFare}
         </p>
       </div>}
     </div>
